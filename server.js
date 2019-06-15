@@ -125,6 +125,12 @@ router.post('/addFavorite', async (ctx, next) => {
     ctx.response.status = 204;
     console.log('________________________________________');
     console.log(favoriteMes);
+    // удаляем иконки
+    const indexFav = favoriteMes.findIndex(({id}) => id === ctx.request.body.id);
+    favoriteMes[indexFav].text = favoriteMes[indexFav].text.slice(0, -13);
+    console.log(favoriteMes);
+
+
     const index = messagesAr.findIndex(({id}) => id === ctx.request.body.id);
     messagesAr[index].messageType = 'favorite';
 });
