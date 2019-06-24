@@ -12,6 +12,8 @@ const app = new Koa();
 const public = path.join(__dirname, '/public');
 let imagesArr = [];
 const imagesArrDel = [];
+const favoriteMes = [];
+const messagesAr = [];
 
 const filesFolder = './public';
 
@@ -117,8 +119,7 @@ app.use(async ctx => {
 
 
 // для тестовввв
-const favoriteMes = [];
-const messagesAr = [];
+
 
 router.post('/addFavorite', async (ctx, next) => {
     favoriteMes.push({...ctx.request.body});
