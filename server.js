@@ -65,11 +65,21 @@ app.use(async (ctx, next) => {
 const router = new Router();
 
 router.get('/imagesArr', async (ctx, next) => {
+  console.log('получил картинки');
   imagesArr = [];
   fs.readdirSync(filesFolder).forEach(file => {
     imagesArr.push({id: uuid.v4(), name: file});
   });
   ctx.response.body = imagesArr;
+});
+
+router.get('/filesArr/files', async (ctx, next) => {
+  console.log('получил файлы');
+  // imagesArr = [];
+  // fs.readdirSync(filesFolder).forEach(file => {
+  //   imagesArr.push({id: uuid.v4(), name: file});
+  // });
+  // ctx.response.body = imagesArr;
 });
 
 router.delete('/imagesArr/:id', async (ctx, next) => {
